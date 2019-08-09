@@ -2,7 +2,7 @@
 
   <!-- Start openpose_ros -->
   <node pkg="openpose_ros" type="openpose_ros_node" name="openpose_ros_node" output="screen">
-    <param name="image_topic"                value="/camera/image" />
+    <param name="image_topic"                value="/usb_cam/image_raw" />
     <param name="input_image_transport_type" value="raw" />
     <param name="output_topic"               value="/openpose_ros/human_list" />
     <param name="display_output"             value="true" />
