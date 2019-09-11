@@ -14,7 +14,7 @@ DEFINE_bool(disable_multi_thread,       false,          "It would slightly reduc
 DEFINE_int32(profile_speed,             1000,           "If PROFILER_ENABLED was set in CMake or Makefile.config files, OpenPose will show some"
                                                         " runtime statistics at this frame number.");
 // OpenPose
-DEFINE_string(model_folder,             "/home/yubao/software/install/openpose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
+DEFINE_string(model_folder,             "/home/yubao/data/Project/openpose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");
 DEFINE_string(prototxt_path,            "",             "The combination `--model_folder` + `--prototxt_path` represents the whole path to the"
                                                         " prototxt file. If empty, it will use the default OpenPose ProtoTxt file.");
 DEFINE_string(caffemodel_path,          "",             "The combination `--model_folder` + `--caffemodel_path` represents the whole path to the"

@@ -1,0 +1,8 @@
+{
+    "ros.distro": "kinetic",
+    "python.autoComplete.extraPaths": [
+        "/home/yubao/data/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/home/yubao/data/SpacialAI/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/kinetic/lib/python2.7/dist-packages"
+    ]
+}

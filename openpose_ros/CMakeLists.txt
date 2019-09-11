@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.7)
 project(openpose_ros)
 
-set(ENV{OpenPose_DIR} "/home/yubao/software/install/openpose/lib/OpenPose")
+#set(ENV{OpenPose_DIR} "/home/yubao/software/install/openpose/lib/OpenPose")
 #SET(ENV{OpenCV_DIR} "/home/yubao/software/install/OpenCV-3.3.1/share/OpenCV")
 
 ## Add support for C++11, supported in ROS Kinetic and newer
@@ -23,7 +23,8 @@ find_package(CUDA REQUIRED) # Uncomment this line if you have trouble compiling
 find_package(OpenCV REQUIRED)
 find_package(GFlags)
 find_package(Glog)
-find_package(OpenPose REQUIRED)
+
+find_package(OpenPose REQUIRED HINTS "$ENV{OpenPose_DIR}")
 
 #link_directories("/home/yubao/software/install/openpose/lib")
 link_directories(${OpenPose_INCLUDE_DIRS}/../lib)

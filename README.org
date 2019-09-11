@@ -1,0 +1,46 @@
+* openpose\_ros
+
+Example ROS catkin package that utilizes the OpenPose library from
+https://github.com/CMU-Perceptual-Computing-Lab/openpose.
+
+** System
+- Ubuntu 16.04 
+- ROS Kinetic 
+- CUDA CUDA 10.0 
+- cuDNN cuDNN 7.6.1
+- OpenCV 3.1
+
+** Installation Steps
+
+1. Clone OpenPose somewhere not in your catkin\_workspace.
+   =bash    git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git=
+
+3. Install openpose using instructions from here:
+   https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/6d3ff8b3361cb5c098294b486a25c9921ad864c2/doc/installation.md.
+   Make sure to run =sudo make install= in the build folder at the end.
+4. Clone this repository into your catkin\_workspace/src directory.
+   =bash    git clone https://github.com/firephinx/openpose_ros.git=
+5. Modify the model\_folder line in
+   openpose\_ros/src/gflags\_options.cpp to where openpose is installed.
+   =bash    DEFINE_string(model_folder,             "/path/to/openpose/models/",      "Folder path (absolute or relative) where the models (pose, face, ...) are located.");=
+6. Modify the image\_topic parameter in
+   openpose\_ros/launch/openpose\_ros.launch to the image\_topic you
+   want to process.
+   =bash    <param name="image_topic"     value="/camera/image_raw" />=
+7. Modify the other parameters in openpose\_ros/src/gflags\_options.cpp
+   and openpose\_ros/launch/openpose\_ros.launch to your liking such as
+   enabling face and hands detection.
+8. Run catkin\_make from your catkin\_workspace directory.
+
+** Running
+1. Start camera
+
+For USB web camera:
+#+begin_src sh
+ rosrun usb_cam usb_cam_node
+#+end_src
+
+2. Start Openpose
+#+BEGIN_EXAMPLE
+    roslaunch openpose_ros openpose_ros.launch
+#+END_EXAMPLE
