@@ -15,6 +15,10 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   cv_bridge
   image_transport
+  message_generation
+  message_runtime
+  actionlib_msgs
+  actionlib
 )
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules")
@@ -33,7 +37,7 @@ message(${OpenPose_LIBS})
 
 catkin_package(
    INCLUDE_DIRS include
-   CATKIN_DEPENDS roscpp rospy std_msgs
+   CATKIN_DEPENDS roscpp rospy std_msgs actionlib_msgs
 )
 
 include_directories( 
@@ -54,6 +58,20 @@ add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catk
 
 
 target_link_libraries(${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+  ${OpenPose_LIBS} 
+  ${GFLAGS_LIBRARY} 
+  ${GLOG_LIBRARY} 
+)
+
+add_executable(${PROJECT_NAME}_action_node src/openpose_ros_action_node.cpp src/openpose.cpp src/openpose_action.cpp 
+                                    src/gflags_options.cpp)
+
+add_dependencies(${PROJECT_NAME}_action_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+
+target_link_libraries(${PROJECT_NAME}_action_node
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
   ${OpenPose_LIBS} 

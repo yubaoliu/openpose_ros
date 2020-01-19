@@ -1,0 +1,11 @@
+# Goal definition
+int16 id
+sensor_msgs/Image image   # usually rgb image
+# sensor_msgs/Image depth
+
+---
+int16 id
+openpose_ros_msgs/OpenPoseHumanList humanList
+
+---
+bool complete
